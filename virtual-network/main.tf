@@ -62,3 +62,5 @@ resource "azurerm_subnet_network_security_group_association" "subnet2_nsg_associ
     # ID of the Network Security Group to associate with the subnet
     network_security_group_id = azurerm_network_security_group.nsg.id
 }
+
+
