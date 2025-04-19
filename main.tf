@@ -34,10 +34,19 @@ module "network-interface-card" {
   subnet_id           = module.virtual-network.subnet1_id  # Associates the NIC with a subnet
 }
 
+# # Module for creating a Linux virtual machine
+# module "linux-vm" {
+#   source              = "./virtual-machine-linux"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+#   nic_id              = module.network-interface-card.nic_id  # Attaches the NIC to the VM
+# }
+
 # Module for creating a Linux virtual machine
-module "linux-vm" {
-  source              = "./virtual-machine-linux"
+module "windows-vm" {
+  source              = "./virtual-machine-windows"
   location            = module.resource-group.location
   resource_group_name = module.resource-group.name
   nic_id              = module.network-interface-card.nic_id  # Attaches the NIC to the VM
 }
+

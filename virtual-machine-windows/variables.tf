@@ -11,7 +11,7 @@ variable "nic_id" {}
 variable "vm_name" {
     description = "Name of the virtual machine"
     type        = string
-    default     = "myVMLinux"
+    default     = "myVMWindows"
 }
 
 # The size of the virtual machine (e.g., Standard_B1s, Standard_D2s_v3)
