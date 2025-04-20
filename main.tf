@@ -61,13 +61,23 @@ module "public-ip" {
 #   # admin_password      = ""  # Admin password for the VM instances
 # }
 
-module "vm-scale-set-windows" {
-  source              = "./vm-scale-set-windows"
+# module "vm-scale-set-windows" {
+#   source              = "./vm-scale-set-windows"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+#   subnet_id           = module.virtual-network.subnet1_id  # Associates the VM scale set with a subnet
+#   vm_name             = "my-windows-vm-scale-set"  # Name of the VM scale set
+#   vm_size             = "Standard_B1s"  # Size of the VM instances in the scale set
+#   # admin_username      = ""  # Admin username for the VM instances
+#   # admin_password      = ""  # Admin password for the VM instances
+# }
+
+module "sql-server-db" {
+  source              = "./sql-server-db"
   location            = module.resource-group.location
   resource_group_name = module.resource-group.name
-  subnet_id           = module.virtual-network.subnet1_id  # Associates the VM scale set with a subnet
-  vm_name             = "my-windows-vm-scale-set"  # Name of the VM scale set
-  vm_size             = "Standard_B1s"  # Size of the VM instances in the scale set
-  # admin_username      = ""  # Admin username for the VM instances
-  # admin_password      = ""  # Admin password for the VM instances
+  sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
+  admin_username      = ""  # Admin username for the SQL Server
+  admin_password      = ""  # Admin password for the SQL Server
+  database_name       = "mydatabase"  # Name of the SQL Database
 }
