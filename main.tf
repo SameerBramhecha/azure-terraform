@@ -11,19 +11,19 @@ module "resource-group" {
 #     resource_group_name     = module.resource-group.name
 # }
 
-# Module for creating a virtual network
-module "virtual-network" {
-  source              = "./virtual-network"
-  location            = module.resource-group.location
-  resource_group_name = module.resource-group.name
-}
+# # Module for creating a virtual network
+# module "virtual-network" {
+#   source              = "./virtual-network"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+# }
 
-# Module for creating a public IP address
-module "public-ip" {
-  source              = "./public-ip"
-  location            = module.resource-group.location
-  resource_group_name = module.resource-group.name
-}
+# # Module for creating a public IP address
+# module "public-ip" {
+#   source              = "./public-ip"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+# }
 
 # # Module for creating a network interface card (NIC)
 # module "network-interface-card" {
@@ -82,12 +82,18 @@ module "public-ip" {
 #   database_name       = "mydatabase"  # Name of the SQL Database
 # }
 
-module "container-registry" {
-  source              = "./container-registry"
+# module "container-registry" {
+#   source              = "./container-registry"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+#   # Uncomment and configure if a container registry is needed
+#   # container_registry_name = "containerregistrysameer"  # Name of the container registry
+#   # sku                 = "Basic"                  # SKU for the container registry
+#   # admin_enabled       = true                     # Enable admin user for the container registry
+# }
+
+module "api-management" {
+  source              = "./apim"
   location            = module.resource-group.location
   resource_group_name = module.resource-group.name
-  # Uncomment and configure if a container registry is needed
-  # container_registry_name = "containerregistrysameer"  # Name of the container registry
-  # sku                 = "Basic"                  # SKU for the container registry
-  # admin_enabled       = true                     # Enable admin user for the container registry
 }
