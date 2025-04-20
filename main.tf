@@ -72,12 +72,22 @@ module "public-ip" {
 #   # admin_password      = ""  # Admin password for the VM instances
 # }
 
-module "sql-server-db" {
-  source              = "./sql-server-db"
+# module "sql-server-db" {
+#   source              = "./sql-server-db"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+#   sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
+#   admin_username      = ""  # Admin username for the SQL Server
+#   admin_password      = ""  # Admin password for the SQL Server
+#   database_name       = "mydatabase"  # Name of the SQL Database
+# }
+
+module "container-registry" {
+  source              = "./container-registry"
   location            = module.resource-group.location
   resource_group_name = module.resource-group.name
-  sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
-  admin_username      = ""  # Admin username for the SQL Server
-  admin_password      = ""  # Admin password for the SQL Server
-  database_name       = "mydatabase"  # Name of the SQL Database
+  # Uncomment and configure if a container registry is needed
+  # container_registry_name = "containerregistrysameer"  # Name of the container registry
+  # sku                 = "Basic"                  # SKU for the container registry
+  # admin_enabled       = true                     # Enable admin user for the container registry
 }
