@@ -59,6 +59,15 @@ resource "azurerm_linux_virtual_machine_scale_set" "linux_vm_scale_set" {
     }
   }
 
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    environment = "dev"
+  }
+
   # OS disk configuration for the VM instances
   os_disk {
     # Caching mode for the OS disk

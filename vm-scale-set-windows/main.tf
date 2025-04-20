@@ -4,8 +4,6 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_vm_scale_set" {
   # Name of the VM scale set
   name = var.vm_name
 
-
-
   # Location where the VM scale set will be deployed
   location = var.location
 
@@ -42,6 +40,14 @@ resource "azurerm_windows_virtual_machine_scale_set" "windows_vm_scale_set" {
       primary   = true
       subnet_id = var.subnet_id
     }
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  tags = {
+    environment = "dev"
   }
 
   # OS disk configuration for the VM instances
