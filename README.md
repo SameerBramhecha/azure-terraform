@@ -1,1 +1,2 @@
-# azure-terraform
+# azure-terraform to be updated.
+password: abcdefghijklo
