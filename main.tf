@@ -72,15 +72,15 @@ module "resource-group" {
 #   # admin_password      = ""  # Admin password for the VM instances
 # }
 
-# module "sql-server-db" {
-#   source              = "./sql-server-db"
-#   location            = module.resource-group.location
-#   resource_group_name = module.resource-group.name
-#   sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
-#   admin_username      = ""  # Admin username for the SQL Server
-#   admin_password      = ""  # Admin password for the SQL Server
-#   database_name       = "mydatabase"  # Name of the SQL Database
-# }
+module "sql-server-db" {
+  source              = "./sql-server-db"
+  location            = module.resource-group.location
+  resource_group_name = module.resource-group.name
+  sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
+  admin_username      = "sameer"  # Admin username for the SQL Server
+  admin_password      = "Sameer@14112002"  # Admin password for the SQL Server
+  database_name       = "mydatabase"  # Name of the SQL Database
+}
 
 # module "container-registry" {
 #   source              = "./container-registry"
@@ -92,8 +92,8 @@ module "resource-group" {
 #   # admin_enabled       = true                     # Enable admin user for the container registry
 # }
 
-module "api-management" {
-  source              = "./apim"
-  location            = module.resource-group.location
-  resource_group_name = module.resource-group.name
-}
+# module "api-management" {
+#   source              = "./apim"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+# }
