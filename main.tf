@@ -3,20 +3,21 @@ module "resource-group" {
   source = "./resource-group"
 }
 
+# # Module for creating a virtual network
+module "virtual-network" {
+  source              = "./virtual-network"
+  location            = module.resource-group.location
+  resource_group_name = module.resource-group.name
+}
+
 # Module for creating a storage account (currently commented out)
 # Uncomment and configure if a storage account is needed
-# module "storage-account"{
-#     source = "./storage-account"
-#     location = module.resource-group.location
-#     resource_group_name     = module.resource-group.name
-# }
-
-# # Module for creating a virtual network
-# module "virtual-network" {
-#   source              = "./virtual-network"
-#   location            = module.resource-group.location
-#   resource_group_name = module.resource-group.name
-# }
+module "storage-account"{
+    source = "./storage-account"
+    location = module.resource-group.location
+    resource_group_name     = module.resource-group.name
+    subnet_id = module.virtual-network.subnet1_id
+}
 
 # # Module for creating a public IP address
 # module "public-ip" {
@@ -72,15 +73,15 @@ module "resource-group" {
 #   # admin_password      = ""  # Admin password for the VM instances
 # }
 
-module "sql-server-db" {
-  source              = "./sql-server-db"
-  location            = module.resource-group.location
-  resource_group_name = module.resource-group.name
-  sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
-  admin_username      = "sameer"  # Admin username for the SQL Server
-  admin_password      = "Sameer@14112002"  # Admin password for the SQL Server
-  database_name       = "mydatabase"  # Name of the SQL Database
-}
+# module "sql-server-db" {
+#   source              = "./sql-server-db"
+#   location            = module.resource-group.location
+#   resource_group_name = module.resource-group.name
+#   sql_server_name     = "sql-server-sameer"  # Name of the SQL Server
+#   admin_username      = "sameer"  # Admin username for the SQL Server
+#   admin_password      = "Sameer@14112002"  # Admin password for the SQL Server
+#   database_name       = "mydatabase"  # Name of the SQL Database
+# }
 
 # module "container-registry" {
 #   source              = "./container-registry"

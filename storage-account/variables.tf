@@ -7,3 +7,8 @@ variable "storage_account_name" {
 variable "resource_group_name" {}
 
 variable "location" {}
+
+variable "subnet_id" {
+    description = "The ID of the subnet to associate with the storage account network rules."
+    type        = string
+}

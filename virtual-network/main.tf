@@ -39,6 +39,8 @@ resource "azurerm_subnet" "subnet1" {
     virtual_network_name = azurerm_virtual_network.vnet.name
     # Address prefix for the subnet
     address_prefixes     = ["10.0.1.0/24"]
+    #Service Endpoint
+  service_endpoints = ["Microsoft.Storage", "Microsoft.Sql"]
 }
 
 # Subnet 2 definition
